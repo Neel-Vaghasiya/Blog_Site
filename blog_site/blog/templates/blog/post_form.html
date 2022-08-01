@@ -1,0 +1,23 @@
+{% extends "blog/base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <div class="content-section shadow-sm p-3 mb-5 bg-body rounded">
+
+        <form method="post">
+            {% csrf_token %}
+            <fieldset>
+                {% if object %}
+                    <legend class='border-bottom mb-4'><h4>Update Blog Post</h4></legend>
+                {% else %}
+                    <legend class='border-bottom mb-4'><h4>New Blog Post</h4></legend>
+                {% endif %}
+                {{ form|crispy }}
+            </fieldset>
+            <div class='my-3'>
+                <button class='btn btn-outline-info' type='submit'>Post</button>
+            </div>
+        </form>
+    </div>
+
+{% endblock content %}
